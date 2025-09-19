@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>11</maven.compiler.release> <!-- Указываем Java 11 -->
+        <maven.compiler.release>11</maven.compiler.release>
         <junit.jupiter.version>5.10.0</junit.jupiter.version>
         <rest.assured.version>5.3.0</rest.assured.version>
         <allure.version>2.24.0</allure.version>
@@ -19,7 +19,6 @@
     </properties>
 
     <dependencies>
-        <!-- Ваши зависимости без изменений -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -73,11 +72,16 @@
             <version>2.9.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <!-- Плагин для компиляции -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -87,7 +91,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Плагин для запуска тестов -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -119,7 +122,6 @@
                 </dependencies>
             </plugin>
 
-            <!-- Плагин для генерации Allure-отчета -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>

@@ -1,7 +1,6 @@
 package ru.yandex.praktikum.tests.login;
 
 import io.qameta.allure.*;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -10,19 +9,19 @@ import org.junit.jupiter.params.provider.MethodSource;
 import ru.yandex.praktikum.clients.CourierClient;
 import ru.yandex.praktikum.data.Courier;
 import org.junit.jupiter.params.provider.Arguments;
+import ru.yandex.praktikum.tests.BaseTest;
 import static org.hamcrest.Matchers.equalTo;
 import java.util.stream.Stream;
 
 @Epic("Авторизация курьера")
 @Feature("Авторизация курьера")
 @Story("Негативные сценарии")
-public class LoginCourierNegativeTest {
+public class LoginCourierNegativeTest extends BaseTest {
 
     private static CourierClient courierClient;
 
     @BeforeAll
-    static void setUp() {
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
+    static void setUpTest() {
         courierClient = new CourierClient();
     }
 

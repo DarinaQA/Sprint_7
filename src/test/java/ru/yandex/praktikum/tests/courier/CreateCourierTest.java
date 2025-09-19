@@ -1,24 +1,23 @@
 package ru.yandex.praktikum.tests.courier;
 
 import io.qameta.allure.*;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 import ru.yandex.praktikum.clients.CourierClient;
 import ru.yandex.praktikum.data.Courier;
+import ru.yandex.praktikum.tests.BaseTest;
 import static org.hamcrest.Matchers.equalTo;
 
 @Epic("Создание курьера")
 @Feature("Создание курьера")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class CreateCourierTest {
+public class CreateCourierTest extends BaseTest {
 
     private CourierClient courierClient;
     private Integer courierId;
 
-    @BeforeAll
-    public void setUp() {
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
+    @BeforeEach
+    public void setUpTest() {
         courierClient = new CourierClient();
     }
 
@@ -26,7 +25,6 @@ public class CreateCourierTest {
     public void tearDown() {
         if (courierId != null) {
             courierClient.delete(courierId);
-            courierId = null;
         }
     }
 
